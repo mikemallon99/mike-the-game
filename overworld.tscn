@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bc1bwlvmoadbj"]
+
+[ext_resource type="Script" uid="uid://k3kchy8nkss8" path="res://overworld.gd" id="1_824ie"]
+[ext_resource type="Texture2D" uid="uid://t3qx2o3m85ck" path="res://mike_battle.png" id="2_nyb65"]
+[ext_resource type="Texture2D" uid="uid://cusmwwy2nmn8m" path="res://nicole_battle.png" id="3_nyb65"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_824ie"]
+size = Vector2(104, 101)
+
+[sub_resource type="TileSet" id="TileSet_824ie"]
+tile_size = Vector2i(100, 100)
+
+[node name="Overworld" type="Node"]
+script = ExtResource("1_824ie")
+
+[node name="Player" type="Area2D" parent="."]
+position = Vector2(2, 1)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(53, 50)
+scale = Vector2(0.155386, 0.157492)
+texture = ExtResource("2_nyb65")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(51, 52)
+shape = SubResource("RectangleShape2D_824ie")
+
+[node name="Nicole" type="Area2D" parent="."]
+position = Vector2(491, 288)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Nicole"]
+position = Vector2(55, 55)
+scale = Vector2(0.163043, 0.166272)
+texture = ExtResource("3_nyb65")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_824ie")
+format = 2
