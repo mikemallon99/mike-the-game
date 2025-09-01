@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bnosms41ylbgh"]
+[gd_scene load_steps=17 format=3 uid="uid://bnosms41ylbgh"]
 
 [ext_resource type="Texture2D" uid="uid://r0jgman1jhj6" path="res://backgrounds_processed/kitchen.png" id="1_jluyr"]
 [ext_resource type="Script" uid="uid://dsbx6n54yd2xa" path="res://kitchen.gd" id="1_k6unl"]
 [ext_resource type="Texture2D" uid="uid://jwhrqjggoem1" path="res://me_sprites_processed/idle_backward.PNG" id="2_k6unl"]
 [ext_resource type="Texture2D" uid="uid://gf3nhxvipunh" path="res://me_sprites_processed/idle_forward.PNG" id="3_ivwby"]
+[ext_resource type="Script" uid="uid://dvef8vyolfx1k" path="res://screenpoint.gd" id="3_scder"]
 [ext_resource type="Texture2D" uid="uid://06mh6qo6dmdk" path="res://me_sprites_processed/idle_left.PNG" id="4_scder"]
 [ext_resource type="Texture2D" uid="uid://bughuay4sj21t" path="res://me_sprites_processed/idle_right.PNG" id="5_m008p"]
 [ext_resource type="Texture2D" uid="uid://bgxfbhe14qtf0" path="res://me_sprites_processed/walk_backward_0.PNG" id="6_06717"]
@@ -97,16 +98,39 @@ animations = [{
 [node name="Kitchen" type="Node"]
 script = ExtResource("1_k6unl")
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Background" type="Node" parent="."]
+
+[node name="Background" type="Sprite2D" parent="Background"]
 position = Vector2(584, 285)
 scale = Vector2(0.615104, 0.534722)
 texture = ExtResource("1_jluyr")
 
+[node name="BottomLeft" type="Node2D" parent="Background"]
+position = Vector2(-80, 720)
+script = ExtResource("3_scder")
+
+[node name="BottomRight" type="Node2D" parent="Background"]
+position = Vector2(1376, 728)
+script = ExtResource("3_scder")
+world_coords = Vector2(15, 0)
+
+[node name="TopLeft" type="Node2D" parent="Background"]
+position = Vector2(424, 288)
+script = ExtResource("3_scder")
+world_coords = Vector2(0, 20)
+
+[node name="TopRight" type="Node2D" parent="Background"]
+position = Vector2(800, 286)
+script = ExtResource("3_scder")
+world_coords = Vector2(15, 20)
+
 [node name="Player" type="Area2D" parent="."]
-position = Vector2(539, 308)
+position = Vector2(336, 536)
 scale = Vector2(0.4, 0.4)
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(12.5, -590)
 sprite_frames = SubResource("SpriteFrames_gd6ct")
 animation = &"idle_backward"
 
